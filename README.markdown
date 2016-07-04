@@ -32,11 +32,11 @@ And various other caveats and differences, as [documented](https://mandrill.zend
 
 The parser has been modified to treat expression arguments in backticks like ``{{if `test > 5`}}`` as strings with backticks preserved, eg. ``"`test > 5`"``. See line 77 on `src/handlebars.l`.
 
-A custom `if` helper exists in `lib/mandrill-helpers/if.js` that handles this case by removing the backticks from strings that have them and evaluating the resulting string using the context to determine if the conditional path should be evaluated or not.
+A custom `if` helper exists in `mandrill/helpers/if.js` that handles this case by removing the backticks from strings that have them and evaluating the resulting string using the context to determine if the conditional path should be evaluated or not.
 
 #### Mandrill-specific helpers
 
-Where applicable, Mandrill-specific helpers have been implemented and are available in `lib/mandrill-helpers`.
+Where applicable, Mandrill-specific helpers have been implemented and are available in `mandrill/helpers`.
 
 These are written in the format that `grunt-compile-handlebars` expects, as this is what we use for building in development.
 
