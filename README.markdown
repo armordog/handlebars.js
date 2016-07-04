@@ -12,6 +12,8 @@ keep the view and the code separated like we all know they should be.
 Checkout the official Handlebars docs site at
 [http://www.handlebarsjs.com](http://www.handlebarsjs.com).
 
+---
+
 v1.3.0-mandrill
 ---------------
 This is a special version of Handlebars 1.3.0 that mimics the custom behaviour of the version used by [Mandrill](https://mandrill.zendesk.com/hc/en-us/articles/205582537-Using-Handlebars-for-dynamic-content#additions-to-standard-handlebars) as [documented here](https://mandrill.zendesk.com/hc/en-us/articles/205582537-Using-Handlebars-for-dynamic-content#additions-to-standard-handlebars). Intended to be used to preview output of Mandrill handlebars templates during development locally without needing to deploy the template to Mandrill.
@@ -20,6 +22,9 @@ Based on conversations with Mandrill, they are using a customized 1.x version of
 
 - Includes custom conditional expressions in `{{if}}` statements.
 - Does not fully support `@` variables like `@root`, `@first`, etc.
+- Doesn't support partials correctly in all cases
+
+And various other caveats and differences, as [documented](https://mandrill.zendesk.com/hc/en-us/articles/205582537-Using-Handlebars-for-dynamic-content).
 
 ### Changes
 
@@ -33,6 +38,9 @@ A custom `if` helper exists in `lib/mandrill-helpers/if.js` that handles this ca
 
 Where applicable, Mandrill-specific helpers have been implemented and are available in `lib/mandrill-helpers`.
 
+These are written in the format that `grunt-compile-handlebars` expects, as this is what we use for building in development.
+
+---
 
 Installing
 ----------
