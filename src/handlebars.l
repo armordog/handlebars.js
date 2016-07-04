@@ -74,6 +74,7 @@ ID    [^\s!"#%-,\.\/;->@\[-\^`\{-~]+/{LOOKAHEAD}
 <mu>{RIGHT_STRIP}?"}}"           this.popState(); return 'CLOSE';
 <mu>'"'("\\"["]|[^"])*'"'        yytext = strip(1,2).replace(/\\"/g,'"'); return 'STRING';
 <mu>"'"("\\"[']|[^'])*"'"        yytext = strip(1,2).replace(/\\'/g,"'"); return 'STRING';
+<mu>"`"("\\"[`]|[^`])*"`"        yytext = strip(0,0).replace(/\\`/g,"`"); return 'STRING';
 <mu>"@"                          return 'DATA';
 <mu>"true"/{LITERAL_LOOKAHEAD}   return 'BOOLEAN';
 <mu>"false"/{LITERAL_LOOKAHEAD}  return 'BOOLEAN';
