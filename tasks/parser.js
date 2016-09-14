@@ -4,7 +4,10 @@ module.exports = function(grunt) {
   grunt.registerTask('parser', 'Generate jison parser.', function() {
     var done = this.async();
 
-    var child = childProcess.spawn('./node_modules/.bin/jison', ['-m', 'js', 'src/handlebars.yy', 'src/handlebars.l'], {stdio: 'inherit'});
+    var jisonPath = require('path').normalize('./node_modules/.bin/jison');
+    if(~require('os').platform().indexOf('win')) jisonPath += '.cmd';
+
+    var child = childProcess.spawn(jisonPath, ['-m', 'js', 'src/handlebars.yy', 'src/handlebars.l'], {stdio: 'inherit'});
     child.on('exit', function(code) {
       if (code != 0) {
         grunt.fatal('Jison failure: ' + code);
